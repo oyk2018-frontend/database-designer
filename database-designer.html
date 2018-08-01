@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="database-designer.css">
+  </head>
+  <body>
+    <div id="app">
+      <h3 id="document-title"></h3>
+
+      <ul class="database-table">
+        <li><strong>users</strong></li>
+        <li>id</li>
+        <li>username</li>
+        <li>email</li>
+        <li>password</li>
+      </ul>
+
+      <ul class="database-table">
+        <li><strong>posts</strong></li>
+        <li>id</li>
+        <li>title</li>
+        <li>description</li>
+        <li>tag</li>
+      </ul>
+
+      <ul class="database-table">
+        <li><strong>contents</strong></li>
+        <li>id</li>
+        <li>title</li>
+        <li>description</li>
+        <li>tags</li>
+      </ul>
+    </div>
+    <script src="js/initial-state.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      window.renderApp();
+    </script>
+  </body>
+</html>
