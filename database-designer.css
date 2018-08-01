@@ -1,5 +1,6 @@
 body {
   background-size: 1em 1em;
+<<<<<<< HEAD
   background-image: 
     linear-gradient(to right, #dfdfdf 1px, transparent 1px), 
     linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
@@ -10,3 +11,9 @@ body {
   height: 200px;
   background-color: #efefef
 }
+=======
+  background-image:
+    linear-gradient(to right, #dfdfdf 1px, transparent 1px),
+    linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+}
+>>>>>>> cea773592efc0ae9ee46caa9de66ecb98d4dfc96

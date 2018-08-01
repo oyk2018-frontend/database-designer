@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
+=======
+>>>>>>> cea773592efc0ae9ee46caa9de66ecb98d4dfc96
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -45,4 +48,8 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> cea773592efc0ae9ee46caa9de66ecb98d4dfc96
