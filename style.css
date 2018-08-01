@@ -1,0 +1,18 @@
+
+
+body {
+    background-image: 
+      linear-gradient(
+        to right,
+        #40e0d02b 2.2px,
+        transparent 2.2px
+      ),
+      linear-gradient(
+        to bottom,
+        #40e0d02b 2.2px,
+        transparent 2.2px
+      );
+    background-size: 0.6em 0.6em;
+    padding: 1em;
+    background-repeat: repeat
+  }
