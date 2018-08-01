@@ -18,7 +18,7 @@ body{
   height: 100vh;
 
   background: #fff;
-    background-image: linear-gradient(rgba(240, 240, 240, .7) .1em, transparent .1em), linear-gradient(90deg, rgba(240, 240, 240, .7) .1em, transparent .1em);
+  background-image: linear-gradient(rgba(240, 240, 240, .7) .1em, transparent .1em), linear-gradient(90deg, rgba(240, 240, 240, .7) .1em, transparent .1em);
   background-size: 1em 1em;
 }
 
