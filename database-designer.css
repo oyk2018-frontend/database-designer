@@ -24,3 +24,28 @@ body {
   border: 1px solid black;
   width: 12em;
 }
+
+.addEntity {
+  width: 5em;
+  height: 5em;
+  position: fixed;
+  right: 3em;
+  bottom: 3em;
+  border: none;
+  cursor: pointer;
+  background-color: #a3c3fa;
+  border-radius: 50%;
+  outline: none;
+}
+
+.addEntity:hover {background-color: #4c85fb}
+
+.addEntity:active {
+  background-color: #4c85fb;
+  transform: translateY(0.25em);
+}
+
+.addEntity span{
+  font-size: 4em;
+  color: #fff;
+}
