@@ -1,4 +1,26 @@
 body {
   background-size: 1em 1em;
-  background-image: linear-gradient(to right, #dfdfdf 1px, transparent 1px), linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
-  }
+  background-image:
+    linear-gradient(to right, #dfdfdf 1px, transparent 1px),
+    linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+  font-family: Helvetica, sans-serif;
+}
+
+#app {
+  position: relative;
+}
+
+#app h3 {
+  font-size: 2em;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  padding: 0.5em;
+}
+
+.database-table {
+  position: absolute;
+  background: white;
+  border: 1px solid black;
+  width: 12em;
+}
