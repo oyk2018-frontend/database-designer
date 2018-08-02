@@ -49,3 +49,31 @@ body {
   font-size: 4em;
   color: #fff;
 }
+
+.database-table {
+  cursor: move;
+  color: #6d6d6d;
+  background-color: #a3c3fa;
+  border: none;
+  border-radius: 0.4em;
+}
+
+.database-table li:first-child {
+  color: black;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  text-transform: uppercase;
+}
+
+.database-table li {
+  padding:0.5em 0.3em 0.5em 0.3em;
+  display: flex;
+  justify-content: space-between;  
+  color: #000;
+}
+
+.database-table li:nth-child(2n) {
+  color: #fff;
+  background-color: #4c85fb;
+}

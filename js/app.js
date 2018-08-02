@@ -9,7 +9,7 @@
   function mapFieldItems(fields) {
     return fields.map(function (field) {
       return `
-          <li>${field.name}</li>
+          <li><span>${field.name}</span><span>${field.type}</span></li>
       `;
     });
   }
