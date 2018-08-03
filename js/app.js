@@ -134,7 +134,7 @@
     }
   }
 
-  function getLastElementPosition(){
+  function getLastEntitysPosition(){
     var elem = document.querySelectorAll(".database-table");
     if(elem.length !== 0){
       return elem[elem.length - 1 ].lastTablePosition =
@@ -156,8 +156,8 @@
       window.__INITIAL_STATE__.entities.push(
         {
           name: header,
-          top: getLastElementPosition().top + 30,
-          left: getLastElementPosition().left + 30,
+          top: getLastEntitysPosition().top + 30,
+          left: getLastEntitysPosition().left + 30,
           fields: []
         }
       )
