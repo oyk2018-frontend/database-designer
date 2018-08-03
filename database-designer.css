@@ -42,3 +42,11 @@ body.drag-and-drop {
     linear-gradient(to right, yellow 1px, transparent 1px),
     linear-gradient(to bottom, yellow 1px, transparent 1px);
 }
+
+body.drag-and-drop .idle {
+  opacity: 0.7;
+}
+
+body.drag-and-drop .is_dragging {
+  transform: scale(1.1);
+}
