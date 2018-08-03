@@ -24,3 +24,12 @@ body {
   border: 1px solid black;
   width: 12em;
 }
+
+.addEntity{
+    position: fixed;
+    bottom: 20px;
+    left: 40px;
+    cursor: pointer;
+    background-color: #ffa502;
+    padding: 10px 20px;
+  }

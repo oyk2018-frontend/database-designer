@@ -18,9 +18,11 @@
     return entities.map(function (entity) {
       const styles = `top: ${entity.top}px; left: ${entity.left}px`;
       return `
-        <ul class="database-table" style="${styles}">
+        <ul id="${"table_"+entities.indexOf(entity)}" class="database-table" style="${styles}">
           <li><b>${entity.name}</b></li>
           ${mapFieldItems(entity.fields).join('\n')}
+          <li class="addField"><a href="#!">new attribute</a></li>
+          <li class="removeEntity"><a href="#!">remove entity</a></li>
         </ul>
       `;
     });
@@ -35,11 +37,50 @@
     );
   }
 
+  function addFieldInput(e){
+    for (var i = 0; i < document.getElementsByTagName("input").length; i++) {
+      document.getElementsByTagName("input")[i].remove();
+    }
+    const li = document.createElement("li");
+      const input = document.createElement("input");
+      input.type = "text";
+    li.appendChild(input);
+
+    console.log(li);
+
+    const before = e.parentElement.parentElement.getElementsByClassName("addField")[0];
+    e.parentElement.parentElement.insertBefore(li, before)
+  }
+
   function render() {
     renderTitle();
     renderEntityContainer();
   }
 
+  function getLastElementPosition(){
+    var elem = document.querySelectorAll(".database-table");
+    return elem[elem.length - 1 ].lastTablePosition =
+    {
+      top : elem[elem.length -1 ].offsetTop,
+      left: elem[elem.length -1 ].offsetLeft,
+    }
+  }
+
+
+
   root.__STATE__ = state;
   root.renderApp = render;
+  root.addFieldInput = addFieldInput;
+  root.getLastElementPosition = getLastElementPosition;
+
 })(window);
+
+
+
+
+
+
+
+
+
+//

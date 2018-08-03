@@ -6,7 +6,7 @@
       top: 150,
       left: 300,
       fields: [{
-        name: "id",
+        name: "id)",
         type: "integer",
       }, {
         name: "username",
