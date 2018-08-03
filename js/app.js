@@ -41,15 +41,17 @@
     for (var i = 0; i < document.getElementsByTagName("input").length; i++) {
       document.getElementsByTagName("input")[i].remove();
     }
-    const li = document.createElement("li");
-      const input = document.createElement("input");
-      input.type = "text";
+    const form = document.createElement("form");
+      const li = document.createElement("li");
+      form.appendChild(li)
+        const input = document.createElement("input");
+        input.type = "text";
     li.appendChild(input);
 
     console.log(li);
 
     const before = e.parentElement.parentElement.getElementsByClassName("addField")[0];
-    e.parentElement.parentElement.insertBefore(li, before)
+    e.parentElement.parentElement.insertBefore(form, before)
   }
 
   function render() {
