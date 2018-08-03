@@ -17,9 +17,16 @@
   function mapEntityItems(entities) {
     return entities.map(function (entity) {
       const styles = `top: ${entity.top}px; left: ${entity.left}px`;
+
+      const modifier = (
+        entity.name === state.UI.relatedEntity
+          ? "is_dragging"
+          : "idle"
+      );
+  
       return `
         <ul
-          class="database-table"
+          class="database-table ${modifier}"
           style="${styles}"
         >
           <li>
