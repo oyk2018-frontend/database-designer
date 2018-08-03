@@ -1,0 +1,59 @@
+body {
+  	background-size: 1em 1em;
+  	background-image:
+    linear-gradient(to right, #dfdfdf 1px, transparent 1px),
+    linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
+  	font-family: Helvetica, sans-serif;
+}
+
+.clear {
+	clear: both;
+}
+
+#container {
+	width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.header {
+	margin-top: 1em;
+} 
+
+.header img {
+	float: left;
+}
+
+.header ul {
+	float: right;
+	margin-top: 0.8em;
+}
+
+.header ul li {
+	display: inline-block;
+}
+
+.header ul li a {
+	padding: 10px 20px 10px 20px;
+	font-size: 24px;
+	color: white;
+	margin-left: 20px;
+	text-decoration: none;
+	background-color: #742525;
+}
+
+.header h1 {
+	float: left;
+	font-size: 1.2em;
+	color: #565656;
+	margin-top: 2em;
+}
+
+#tweet {
+	float: right;
+	margin-top: 2.3em;
+}
+
+
+
+
