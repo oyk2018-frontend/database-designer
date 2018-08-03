@@ -4,6 +4,8 @@
     UI: {
       mode: "designing", // or drag-and-drop
       relatedEntity: null,
+      startX: 0,
+      startY: 0,
     },
     entities: [{
       name: "users",
