@@ -6,5 +6,4 @@
  
  # Contributors
  
-   - 
-https://github.com/selmasaltik/
+   - https://github.com/selmasaltik/
