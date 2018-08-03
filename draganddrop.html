@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <title>Test 1</title>
+    <meta charset="utf-8" />
+</head>
+<head>
+    <style>
+        html,body{margin: 0px;padding: 0px;height: 100%;font-family: 'arial';}
+        #container {
+            background-image:url(http://dbpatterns.com/static/images/background.png);
+            position:absolute;width: 100%;height: 100%;top:0;right: 0;bottom: 0;left:0;
+        }
+        #box{
+            position: absolute;
+            background-color: #fff;
+            border:solid 1px #ddd;
+            user-select: none;
+            width: 200px;
+            height: auto;
+            left:50px;
+            top:50px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+
+        }
+        #box h3{text-align: center;display: block;margin:7px 0px;}
+        #box ul,
+        #box ul li{margin: 0px;padding: 0px;list-style: none;}
+        #box ul li{border-top: 1px solid #eaeaea;padding: 7px;font-size:14px;}
+        #box ul li:hover{background-color: #efefef;}
+        #box ul li span{float:right;color:#ccc;}
+    </style>
+    <script>
+        var mydragg = function(){
+            return {
+                move : function(divid,xpos,ypos){
+                    divid.style.left = xpos + 'px';
+                    divid.style.top = ypos + 'px';
+                },
+                startMoving : function(divid,container,evt){
+                    evt = evt || window.event;
+                    var posX = evt.clientX,
+                        posY = evt.clientY,
+                        divTop = divid.style.top,
+                        divLeft = divid.style.left,
+                        eWi = parseInt(divid.style.width),
+                        eHe = parseInt(divid.style.height),
+                        cWi = parseInt(document.getElementById(container).style.width),
+                        cHe = parseInt(document.getElementById(container).style.height);
+                    document.getElementById(container).style.cursor='move';
+                    divTop = divTop.replace('px','');
+                    divLeft = divLeft.replace('px','');
+                    var diffX = posX - divLeft,
+                        diffY = posY - divTop;
+                    document.onmousemove = function(evt){
+                        evt = evt || window.event;
+                        var posX = evt.clientX,
+                            posY = evt.clientY,
+                            aX = posX - diffX,
+                            aY = posY - diffY;
+                        if (aX < 0) aX = 0;
+                        if (aY < 0) aY = 0;
+                        if (aX + eWi > cWi) aX = cWi - eWi; //kordinat hesaplama
+                        if (aY + eHe > cHe) aY = cHe -eHe; //kordinat hesaplama
+                        mydragg.move(divid,aX,aY);
+                    }
+                },
+                stopMoving : function(container){
+                    var a = document.createElement('script');
+                    document.getElementById(container).style.cursor='default';
+                    document.onmousemove = function(){}
+                },
+            }
+        }();
+
+    </script>
+</head>
+<body>
+
+<div id="container">
+    <div id="box" onmousedown='mydragg.startMoving(this,"container",event);' onmouseup='mydragg.stopMoving("container");' >
+        <h3>Table Title</h3>
+        <ul class="sort">
+            <li>id          <span>integer</span></li>
+            <li>username    <span>string</span></li>
+            <li>password    <span>string</span></li>
+            <li>first_name  <span>string</span></li>
+            <li>last_name   <span>string</span></li>
+            <li>email       <span>string</span></li>
+            <li>city        <span>string</span></li>
+            <li>role        <span>string</span></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
