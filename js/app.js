@@ -23,7 +23,7 @@
           ? "is_dragging"
           : "idle"
       );
-  
+
       return `
         <ul
           class="database-table ${modifier}"
@@ -67,14 +67,38 @@
     const form = document.createElement("form");
       const li = document.createElement("li");
       form.appendChild(li)
+
         const input = document.createElement("input");
         input.type = "text";
     li.appendChild(input);
 
 
 
-    const before = e.parentElement.parentElement.getElementsByClassName("addField")[0];
-    e.parentElement.parentElement.insertBefore(form, before)
+    const before = e.target.parentElement.parentElement.getElementsByClassName("addField")[0];
+    e.target.parentElement.parentElement.insertBefore(form, before)
+  }
+
+  function addField(e){
+    e.preventDefault();
+    console.log(e.target);
+    const clickClass = e.target.parentElement.classList;
+    clickClass.forEach(t =>{
+      if (t === "addField") {
+        window.addFieldInput(e.target);
+
+
+      }
+    });
+    const tar = e.target.parentElement.querySelector("h4").dataset.entity;
+    for (var i = 0; i < __INITIAL_STATE__.entities.length; i++) {
+      if(__INITIAL_STATE__.entities[i].name === tar){
+        __INITIAL_STATE__.entities[i].fields.push({
+
+        });
+        render();
+      }
+    }
+    console.log("we are here");
   }
 
   function render() {
@@ -100,10 +124,24 @@
       getNewEntity
     );
 
-    const a = document.getElementsByClassName("removeEntity");
+    const fieldButton = document.getElementsByClassName("addField");
 
-    for (var i = 0; i < a.length; i++) {
-      a[i].addEventListener(
+    for (var i = 0; i < fieldButton.length; i++) {
+      fieldButton[i].addEventListener(
+        "click",
+        addFieldInput
+      )
+    }
+
+    document.addEventListener(
+      "submit",
+      addField
+    );
+
+    const removeButton = document.getElementsByClassName("removeEntity");
+
+    for (var i = 0; i < removeButton.length; i++) {
+      removeButton[i].addEventListener(
         "click",
         removeEntity
       )
@@ -160,20 +198,24 @@
 
   function getNewEntity(){
       const header = window.prompt("entity name");
-      window.__INITIAL_STATE__.entities.push(
-        {
-          name: header,
-          top: getLastEntitysPosition().top + 30,
-          left: getLastEntitysPosition().left + 30,
-          fields: []
-        }
-      )
-      window.renderApp();
+      if (header !== "") {
+        window.__INITIAL_STATE__.entities.push(
+          {
+            name: header,
+            top: getLastEntitysPosition().top + 30,
+            left: getLastEntitysPosition().left + 30,
+            fields: []
+          }
+        )
+        window.renderApp();
+      }else {
+        console.log("empty ");
+      }
 
   }
 
   function removeEntity(event){
-    console.log(event.target.dataset.entity);
+
 
     for (let i = 0; i < __INITIAL_STATE__.entities.length ; i++) {
       if(__INITIAL_STATE__.entities[i].name === event.target.dataset.entity){
@@ -188,8 +230,6 @@
 
   root.__STATE__ = state;
   root.renderApp = render;
-  root.addFieldInput = addFieldInput;
-  root.getLastElementPosition = getLastElementPosition;
 
 })(window);
 

@@ -12,14 +12,7 @@ window.onload = () =>{
     // window.addField(e.target)
 
 
-    const clickClass = e.target.parentElement.classList;
-    clickClass.forEach(t =>{
-      if (t === "addField") {
-        window.addFieldInput(e.target);
 
-
-      }
-    });
     })
 
 
