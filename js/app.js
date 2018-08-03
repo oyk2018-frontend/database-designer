@@ -16,7 +16,7 @@
 
   function myFunction() {
     var rename = prompt("Yeni isim giriniz", state.title);
-    if (rename != "") {
+    if (rename != "" || rename != null ) {
       state.title=rename;
         document.getElementById("document-title").innerHTML = rename ;
         console.log(state.title);
