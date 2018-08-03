@@ -6,4 +6,7 @@
  
  # Contributors
  
-   - 
+   - @hazalns
+   - @ecoderat
+   - @fatiherikli
+   - @seymanurmutlu 
