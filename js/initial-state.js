@@ -1,6 +1,10 @@
 (function (root) {
   root.__INITIAL_STATE__ = {
     title: "Untitled Document",
+    UI: {
+      mode: "designing", // or drag-and-drop
+      relatedEntity: null,
+    },
     entities: [{
       name: "users",
       top: 150,

@@ -39,10 +39,24 @@
     return entities.map(function (entity) {
       const styles = `top: ${entity.top}px; left: ${entity.left}px`;
       return `
+<<<<<<< HEAD
       <ul class="database-table" style="${styles}">
       <li><b>${entity.name}</b></li>
       ${mapFieldItems(entity.fields).join('\n')}
       </ul>
+=======
+        <ul
+          class="database-table"
+          style="${styles}"
+        >
+          <li>
+            <h4
+              data-entity=${entity.name}
+            >${entity.name}</h4>
+          </li>
+          ${mapFieldItems(entity.fields).join('\n')}
+        </ul>
+>>>>>>> 81b531c8cf88d6b073354446eb48cda232a10c6e
       `;
     });
   }
@@ -53,6 +67,7 @@
       state.entities
       ).join(
       "\n"
+<<<<<<< HEAD
       );
     }
 
@@ -60,6 +75,68 @@
       renderTitle();
       renderEntityContainer();
     }
+=======
+    );
+
+    const entityTitles = entityList.querySelectorAll(".database-table h4");
+    for (let i = 0; i < entityTitles.length; i++) {
+      const title = entityTitles[i];
+      title.addEventListener(
+        'mousedown',
+        handleMouseDown
+      );
+    }
+  }
+
+  function render() {
+    document.body.setAttribute("class", state.UI.mode);
+
+    renderTitle();
+    renderEntityContainer();
+
+    // todo: detach this event listener before re-render
+    document.body.addEventListener(
+      'mousemove',
+      handleMouseMove
+    );
+
+    // todo: detach this event listener before re-render
+    document.body.addEventListener(
+      'mouseup',
+      handleMouseUp
+    );
+  }
+
+  function handleMouseDown(event) {
+    const entityName = event.target.dataset.entity;
+
+    state.UI.mode = 'drag-and-drop';
+    state.UI.relatedEntity = entityName;
+  }
+
+  function handleMouseMove(event) {
+    if (state.UI.mode === 'drag-and-drop') {
+      // TODO: Don't mutate the state directly
+      //       Create a new state
+      state.entities.forEach(function (entity) {
+        if (entity.name === state.UI.relatedEntity) {
+          entity.top = event.clientY;
+          entity.left = event.clientX;
+        }
+      });
+
+      render();
+    }
+  }
+
+  function handleMouseUp(event) {
+    if (state.UI.mode === 'drag-and-drop') {
+      state.UI.mode = 'designing';
+      state.UI.relatedEntity = null;
+      render();
+    }
+  }
+>>>>>>> 81b531c8cf88d6b073354446eb48cda232a10c6e
 
     root.__STATE__ = state;
     root.renderApp = render;
