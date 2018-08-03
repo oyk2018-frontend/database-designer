@@ -18,11 +18,18 @@
     return entities.map(function (entity) {
       const styles = `top: ${entity.top}px; left: ${entity.left}px`;
       return `
-        <ul id="${"table_"+entities.indexOf(entity)}" class="database-table" style="${styles}">
-          <li><b>${entity.name}</b></li>
+        <ul
+          class="database-table"
+          style="${styles}"
+        >
+          <li>
+            <h4
+              data-entity=${entity.name}
+            >${entity.name}</h4>
+          </li>
           ${mapFieldItems(entity.fields).join('\n')}
           <li class="addField"><a href="#!">new attribute</a></li>
-          <li class="removeEntity"><a href="#!">remove entity</a></li>
+          <li class="removeEntity" ><a href="#!" data-entity="${entity.name}">remove entity</a></li>
         </ul>
       `;
     });
@@ -35,6 +42,15 @@
     ).join(
       "\n"
     );
+
+    const entityTitles = entityList.querySelectorAll(".database-table h4");
+    for (let i = 0; i < entityTitles.length; i++) {
+      const title = entityTitles[i];
+      title.addEventListener(
+        'mousedown',
+        handleMouseDown
+      );
+    }
   }
 
   function addFieldInput(e){
@@ -48,23 +64,116 @@
         input.type = "text";
     li.appendChild(input);
 
-    console.log(li);
+
 
     const before = e.parentElement.parentElement.getElementsByClassName("addField")[0];
     e.parentElement.parentElement.insertBefore(form, before)
   }
 
   function render() {
+    document.body.setAttribute("class", state.UI.mode);
+
     renderTitle();
     renderEntityContainer();
+
+    // todo: detach this event listener before re-render
+    document.body.addEventListener(
+      'mousemove',
+      handleMouseMove
+    );
+
+    // todo: detach this event listener before re-render
+    document.body.addEventListener(
+      'mouseup',
+      handleMouseUp
+    );
+
+    document.getElementsByClassName("addEntity")[0].addEventListener(
+      "click",
+      getNewEntity
+    );
+
+    const a = document.getElementsByClassName("removeEntity");
+
+    for (var i = 0; i < a.length; i++) {
+      a[i].addEventListener(
+        "click",
+        removeEntity
+      )
+    }
+
+  }
+
+  function handleMouseDown(event) {
+    const entityName = event.target.dataset.entity;
+
+    state.UI.mode = 'drag-and-drop';
+    state.UI.relatedEntity = entityName;
+  }
+
+  function handleMouseMove(event) {
+    if (state.UI.mode === 'drag-and-drop') {
+      // TODO: Don't mutate the state directly
+      //       Create a new state
+      state.entities.forEach(function (entity) {
+        if (entity.name === state.UI.relatedEntity) {
+          entity.top = event.clientY;
+          entity.left = event.clientX;
+        }
+      });
+
+      render();
+    }
+  }
+
+  function handleMouseUp(event) {
+    if (state.UI.mode === 'drag-and-drop') {
+      state.UI.mode = 'designing';
+      state.UI.relatedEntity = null;
+      render();
+    }
   }
 
   function getLastElementPosition(){
     var elem = document.querySelectorAll(".database-table");
-    return elem[elem.length - 1 ].lastTablePosition =
-    {
-      top : elem[elem.length -1 ].offsetTop,
-      left: elem[elem.length -1 ].offsetLeft,
+    if(elem.length !== 0){
+      return elem[elem.length - 1 ].lastTablePosition =
+      {
+        top : elem[elem.length -1 ].offsetTop,
+        left: elem[elem.length -1 ].offsetLeft,
+      }
+    }else {
+      return elem.lastTablePosition =
+      {
+        top : 0,
+        left: 0,
+      }
+    }
+  }
+
+  function getNewEntity(){
+      const header = window.prompt("entity name");
+      window.__INITIAL_STATE__.entities.push(
+        {
+          name: header,
+          top: getLastElementPosition().top + 30,
+          left: getLastElementPosition().left + 30,
+          fields: []
+        }
+      )
+      window.renderApp();
+
+  }
+
+  function removeEntity(event){
+    console.log(event.target.dataset.entity);
+
+    for (let i = 0; i < __INITIAL_STATE__.entities.length ; i++) {
+      if(__INITIAL_STATE__.entities[i].name === event.target.dataset.entity){
+
+      __INITIAL_STATE__.entities.splice(i, 1)
+        render();
+      }
     }
   }
 

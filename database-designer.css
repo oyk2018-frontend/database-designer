@@ -4,6 +4,7 @@ body {
     linear-gradient(to right, #dfdfdf 1px, transparent 1px),
     linear-gradient(to bottom, #dfdfdf 1px, transparent 1px);
   font-family: Helvetica, sans-serif;
+  height: 100vh;
 }
 
 #app {
@@ -24,7 +25,6 @@ body {
   border: 1px solid black;
   width: 12em;
 }
-
 .addEntity{
     position: fixed;
     bottom: 20px;
@@ -33,3 +33,20 @@ body {
     background-color: #ffa502;
     padding: 10px 20px;
   }
+
+.database-table h4 {
+  background-color: yellow;
+  text-align: center;
+  padding: 4px;
+  cursor: move;
+}
+
+body.drag-and-drop h3 {
+  display: none;
+}
+
+body.drag-and-drop {
+  background-image:
+    linear-gradient(to right, yellow 1px, transparent 1px),
+    linear-gradient(to bottom, yellow 1px, transparent 1px);
+}

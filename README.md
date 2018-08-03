@@ -6,4 +6,4 @@
 
  # Contributors
 
-   - @  curealreadytaken
+   - @  
