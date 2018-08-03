@@ -80,7 +80,6 @@
 
   function addField(e){
     e.preventDefault();
-    console.log(e.target);
     const clickClass = e.target.parentElement.classList;
     clickClass.forEach(t =>{
       if (t === "addField") {
@@ -93,12 +92,13 @@
     for (var i = 0; i < __INITIAL_STATE__.entities.length; i++) {
       if(__INITIAL_STATE__.entities[i].name === tar){
         __INITIAL_STATE__.entities[i].fields.push({
-
+          name: document.getElementsByTagName("input")[0].value,
+          type: "integer",
         });
         render();
       }
     }
-    console.log("we are here");
+
   }
 
   function render() {
