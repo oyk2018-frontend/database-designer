@@ -6,10 +6,31 @@
     titleElement.innerHTML = state.title;
   }
 
+  document.getElementById("document-title").ondblclick = function() {myFunction()};
+
+  function myFunction() {
+    document.getElementById("document-title").innerHTML = state.title;
+
+    myFunction();
+  }
+
+  function myFunction() {
+    var rename = prompt("Yeni isim giriniz", state.title);
+    if (rename != "" || rename != null ) {
+      state.title=rename;
+        document.getElementById("document-title").innerHTML = rename ;
+        console.log(state.title);
+
+    } else {
+
+      alert("Boş değer girilemez !!");
+    }
+}
+
   function mapFieldItems(fields) {
     return fields.map(function (field) {
       return `
-          <li>${field.name}</li>
+      <li>${field.name}</li>
       `;
     });
   }
@@ -25,6 +46,12 @@
       );
 
       return `
+<<<<<<< HEAD
+      <ul class="database-table" style="${styles}">
+      <li><b>${entity.name}</b></li>
+      ${mapFieldItems(entity.fields).join('\n')}
+      </ul>
+=======
         <ul
           class="database-table ${modifier}"
           style="${styles}"
@@ -36,6 +63,7 @@
           </li>
           ${mapFieldItems(entity.fields).join('\n')}
         </ul>
+>>>>>>> 81b531c8cf88d6b073354446eb48cda232a10c6e
       `;
     });
   }
@@ -44,8 +72,17 @@
     const entityList = document.getElementById("entity-list");
     entityList.innerHTML = mapEntityItems(
       state.entities
-    ).join(
+      ).join(
       "\n"
+<<<<<<< HEAD
+      );
+    }
+
+    function render() {
+      renderTitle();
+      renderEntityContainer();
+    }
+=======
     );
 
     const entityTitles = entityList.querySelectorAll(".database-table h4");
@@ -115,7 +152,8 @@
       render();
     }
   }
+>>>>>>> 81b531c8cf88d6b073354446eb48cda232a10c6e
 
-  root.__STATE__ = state;
-  root.renderApp = render;
-})(window);
+    root.__STATE__ = state;
+    root.renderApp = render;
+  })(window);
