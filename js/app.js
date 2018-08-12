@@ -119,3 +119,19 @@
   root.__STATE__ = state;
   root.renderApp = render;
 })(window);
+
+document.getElementsByClassName("addEntity")[0].addEventListener("click", (e) => {
+  e.preventDefault();
+  const header = window.prompt("Entity Name:");
+  console.log(header);
+  window.__INITIAL_STATE__.entities.push(
+    {
+      name: header,
+      top: 10,
+      left: 120,
+      fields:[]
+    }
+  )
+  window.renderApp();
+});
+

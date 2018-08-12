@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="database-designer.css">
-  </head>
-  <body>
-    <div id="app">
-      <h3 id="document-title"></h3>
-      <div id="entity-list"></div>
-    </div>
-    <script src="js/initial-state.js"></script>
-    <script src="js/app.js"></script>
-    <script>
-      window.renderApp();
-    </script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="database-designer.css">
+</head>
+
+<body>
+  <div id="app">
+    <h3 id="document-title"></h3>
+    <div id="entity-list"></div>
+  </div>
+  <div class="addEntity">
+    <a href="">Add Entity</a>
+  </div>
+  <script src="js/initial-state.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    window.renderApp();
+  </script>
+</body>
+
 </html>

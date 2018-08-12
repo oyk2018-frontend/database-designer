@@ -26,6 +26,18 @@ body {
   width: 12em;
 }
 
+.addEntity{
+  padding: 10px 20px;
+  bottom: 20px;
+  left: 40px;
+  cursor: pointer;
+  background-color: #ffa502;
+  position: fixed;
+}
+
+.addEntity a{
+  text-decoration: none;
+}
 .database-table h4 {
   background-color: yellow;
   text-align: center;
