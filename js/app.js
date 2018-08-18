@@ -17,9 +17,16 @@
   function mapEntityItems(entities) {
     return entities.map(function (entity) {
       const styles = `top: ${entity.top}px; left: ${entity.left}px`;
+
+      const modifier = (
+        entity.name === state.UI.relatedEntity
+          ? "is_dragging"
+          : "idle"
+      );
+
       return `
         <ul
-          class="database-table"
+          class="database-table ${modifier}"
           style="${styles}"
         >
           <li>
@@ -73,8 +80,17 @@
   function handleMouseDown(event) {
     const entityName = event.target.dataset.entity;
 
+    const entityHeaderReact = (
+      event.target.getBoundingClientRect()
+    );
+
+    const diffX = event.clientX - entityHeaderReact.left;
+    const diffY = event.clientY - entityHeaderReact.top;
+
     state.UI.mode = 'drag-and-drop';
     state.UI.relatedEntity = entityName;
+    state.UI.startX = diffX;
+    state.UI.startY = diffY;
   }
 
   function handleMouseMove(event) {
@@ -83,8 +99,8 @@
       //       Create a new state
       state.entities.forEach(function (entity) {
         if (entity.name === state.UI.relatedEntity) {
-          entity.top = event.clientY;
-          entity.left = event.clientX;
+          entity.top = event.clientY - state.UI.startY;
+          entity.left = event.clientX - state.UI.startX;
         }
       });
 
