@@ -11,7 +11,7 @@ body {
   position: relative;
 }
 
-#app h3 {
+#app #document-title {
   font-size: 2em;
   position: fixed;
   width: 100%;
@@ -23,7 +23,7 @@ body {
   position: absolute;
   background: white;
   border: 1px solid black;
-  width: 12em;
+  min-width: 12em;
 }
 
 .database-table h4 {
@@ -33,7 +33,96 @@ body {
   cursor: move;
 }
 
-body.drag-and-drop h3 {
+.field-container {
+  height: 23px;
+}
+
+.field-container:hover {
+  background-color: #dfdfdf
+}
+
+
+.field-container:hover > .delete-field {
+  background-color: #b81919
+}
+
+
+.field {
+  text-decoration: none;
+  display: block;
+  color: #000000;
+  padding: 3px;
+  float: left;
+  min-width: 85%;
+}
+
+.field span {
+  color: rgba(160, 156, 156, 0.904);
+  float: right;
+}
+
+.delete-field {
+  float: left;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #777474;
+  margin: 4px;
+}
+
+.dialog {
+  width: 290px;
+  height: 230px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: #2096ff;
+  text-align: center;
+  position: fixed;
+  left: 30%;
+  top: 30%;
+  z-index: 11;
+  padding: 15px;
+  display: none;
+}
+
+.dialog h3 {
+  font-weight: bold;
+  font-size: 2em
+}
+
+.dialog .container {
+  background: #e6e6e6;
+  height: 170px;
+  margin-top: 10px;
+  text-align: left;
+  padding: 5px;
+}
+
+.dialog .container p {
+  margin: 10px;
+}
+
+.dialog .container p:last-child{
+  margin: 2em 1em;
+}
+
+.dialog .container p a{
+  text-decoration: none;
+  color: #000000;
+  background-color: #dc3545;
+  padding: 7px 15px;
+  border-radius: 4px;
+}
+
+.dialog .container p a:first-child {
+  background-color: #28a745;
+}
+
+body.drag-and-drop #document-title {
+  display: none;
+}
+
+body.drag-and-drop .dialog {
   display: none;
 }
 
